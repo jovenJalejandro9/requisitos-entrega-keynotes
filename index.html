@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Requisitos de entrega final</title>
+<title>Requisitos de entrega final · Keynotes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -31,7 +31,14 @@
   .antetitulo { font: 500 12px/1 var(--f-texto); letter-spacing: .14em; text-transform: uppercase; color: var(--acento); }
   h1 { font: 700 clamp(34px, 6vw, 48px)/1.05 var(--f-texto); letter-spacing: -.025em; margin: 0; text-wrap: balance; }
   .version { margin: 0; font: 500 13px/1.4 var(--f-mono); color: var(--gris-claro); }
-  .entradilla { color: var(--gris); font-size: 18px; margin: 4px 0 0; max-width: 58ch; }
+  .datos { margin: 18px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--linea); }
+  .datos div { padding: 12px 0; border-bottom: 1px solid var(--linea); display: grid; gap: 2px; }
+  .datos div:nth-child(odd) { padding-right: 24px; }
+  .datos dt { font: 500 11px/1.3 var(--f-texto); letter-spacing: .12em; text-transform: uppercase; color: var(--gris-claro); }
+  .datos dd { margin: 0; font-size: 15px; font-weight: 500; }
+  .alcance { margin: 14px 0 0; color: var(--gris); font-size: 15px; max-width: 62ch; }
+  @media (max-width: 640px) { .datos { grid-template-columns: 1fr; } .datos div:nth-child(odd) { padding-right: 0; } }
+  .entradilla { color: var(--tinta); font-size: 20px; font-weight: 500; margin: 4px 0 0; max-width: 58ch; }
 
   .aviso { display: flex; gap: 14px; align-items: flex-start; background: var(--acento-suave); border-radius: 12px; padding: 18px 20px; }
   .aviso b { color: var(--acento); }
@@ -81,10 +88,16 @@
 
 <main class="hoja">
   <header>
-    <span class="antetitulo">Keynotes AiKit Live · Miguel y Pablo</span>
+    <span class="antetitulo">Trabajo de postproducción de vídeo</span>
     <h1>Requisitos de entrega final</h1>
-    <p class="entradilla">Material que se entrega para cada una de las dos conferencias.</p>
-    <p class="version">Versión 1 · 29 de septiembre de 2026</p>
+    <p class="entradilla">Keynotes de Miguel Martín y Pablo Yusta</p>
+    <dl class="datos">
+      <div><dt>Proyecto</dt><dd>Keynotes AiKit Live</dd></div>
+      <div><dt>Ponentes</dt><dd>Miguel Martín · Pablo Yusta</dd></div>
+      <div><dt>Trabajo</dt><dd>Postproducción de vídeo: montaje y etalonaje</dd></div>
+      <div><dt>Versión</dt><dd>1 · 29 de septiembre de 2026</dd></div>
+    </dl>
+    <p class="alcance">Este documento establece el material que debe entregarse al finalizar el trabajo, para cada una de las dos keynotes.</p>
   </header>
 
   <div class="aviso" role="note">
@@ -208,7 +221,7 @@
     └── PABLO_KEYNOTE_FICHA_TECNICA.txt</pre></div>
   </section>
 
-  <footer>Conferencias de Miguel y de Pablo · 25 fps · timecode del máster desde 01:00:00:00</footer>
+  <footer>Keynotes de Miguel Martín y Pablo Yusta · Requisitos de entrega final · Versión 1</footer>
 </main>
 
 <script>
