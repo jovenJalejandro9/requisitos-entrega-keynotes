@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Requisitos de entrega final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Una columna de lectura: cabecera, aviso, bloques de entrega (nombre · para qué · especificación) y el árbol en caja de código. */
+  :root {
+    --papel: #ffffff;
+    --tinta: #16181d;
+    --gris: #5f6573;
+    --gris-claro: #8a8f9c;
+    --linea: #e8e9ee;
+    --caja: #f6f7f9;
+    --acento: #1f4fd6;
+    --acento-suave: #eef2fd;
+    --f-texto: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--papel); color: var(--tinta); font: 16px/1.6 var(--f-texto);
+    -webkit-font-smoothing: antialiased; padding-inline: 20px; padding-block: 56px 80px; }
+  .hoja { max-width: 760px; margin: 0 auto; display: grid; gap: 56px; }
+
+  header { display: grid; gap: 10px; }
+  .antetitulo { font: 500 12px/1 var(--f-texto); letter-spacing: .14em; text-transform: uppercase; color: var(--acento); }
+  h1 { font: 700 clamp(34px, 6vw, 48px)/1.05 var(--f-texto); letter-spacing: -.025em; margin: 0; text-wrap: balance; }
+  .version { margin: 0; font: 500 13px/1.4 var(--f-mono); color: var(--gris-claro); }
+  .entradilla { color: var(--gris); font-size: 18px; margin: 4px 0 0; max-width: 58ch; }
+
+  .aviso { display: flex; gap: 14px; align-items: flex-start; background: var(--acento-suave); border-radius: 12px; padding: 18px 20px; }
+  .aviso b { color: var(--acento); }
+  .aviso p { margin: 0; }
+  .aviso .marca { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--acento); color: var(--papel);
+    display: grid; place-items: center; font: 700 13px/1 var(--f-texto); margin-top: 2px; }
+
+  section { display: grid; gap: 18px; }
+  h2 { font: 600 13px/1 var(--f-texto); letter-spacing: .12em; text-transform: uppercase; color: var(--gris-claro); margin: 0;
+    padding-bottom: 12px; border-bottom: 1px solid var(--linea); }
+  .items { display: grid; gap: 0; }
+  .item { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 6px 28px; padding-block: 18px; border-bottom: 1px solid var(--linea); }
+  .item:last-child { border-bottom: 0; }
+  .item h3 { font: 600 18px/1.3 var(--f-texto); margin: 0; letter-spacing: -.01em; }
+  .item .para { color: var(--gris); font-size: 14px; margin: 4px 0 0; line-height: 1.45; }
+  .spec { display: grid; gap: 8px; min-width: 0; align-content: start; }
+  .spec p { margin: 0; }
+  .fichas { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; }
+  .ficha { font: 500 13px/1 var(--f-mono); background: var(--caja); border: 1px solid var(--linea); border-radius: 6px; padding: 6px 8px; color: var(--tinta); white-space: nowrap; }
+  .sub { font: 500 13px/1 var(--f-texto); color: var(--gris); margin-bottom: 2px; }
+  code { font: 500 14px var(--f-mono); background: var(--caja); border: 1px solid var(--linea); border-radius: 5px; padding: 1px 6px; }
+
+  .arbol-cab { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .arbol-cab p { margin: 0; color: var(--gris); font-size: 15px; }
+  button { font: 500 14px var(--f-texto); color: var(--tinta); background: var(--papel); border: 1px solid var(--linea); border-radius: 8px;
+    padding: 8px 14px; cursor: pointer; white-space: nowrap; }
+  button:hover { border-color: var(--gris-claro); }
+  button:focus-visible { outline: 3px solid var(--acento-suave); outline-offset: 2px; border-color: var(--acento); }
+  .caja-codigo { background: var(--caja); border: 1px solid var(--linea); border-radius: 12px; overflow-x: auto; }
+  pre { margin: 0; padding: 22px 24px; font: 400 13.5px/1.7 var(--f-mono); color: var(--tinta); tab-size: 2; }
+  pre .n { color: var(--acento); font-weight: 500; }
+  pre .c { color: var(--gris-claro); }
+
+  footer { color: var(--gris-claro); font-size: 14px; border-top: 1px solid var(--linea); padding-top: 20px; }
+
+  @media (max-width: 640px) {
+    body { padding-inline: 16px; padding-block: 36px 56px; }
+    .hoja { gap: 44px; }
+    .item { grid-template-columns: 1fr; }
+    .arbol-cab { flex-direction: column; align-items: flex-start; }
+    pre { padding: 18px; font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+
+<main class="hoja">
+  <header>
+    <span class="antetitulo">Keynotes AiKit Live · Miguel y Pablo</span>
+    <h1>Requisitos de entrega final</h1>
+    <p class="entradilla">Material que se entrega para cada una de las dos conferencias.</p>
+    <p class="version">Versión 1 · 29 de septiembre de 2026</p>
+  </header>
+
+  <div class="aviso" role="note">
+    <span class="marca" aria-hidden="true">!</span>
+    <p><b>Todas las versiones, limpias:</b> sin timecode, nombres de clip ni contadores sobreimpresos.</p>
+  </div>
+
+  <section aria-labelledby="t-video">
+    <h2 id="t-video">Vídeo</h2>
+    <div class="items">
+      <div class="item">
+        <div><h3>Máster</h3><p class="para">Copia de máxima calidad para archivar, de la que salen todas las demás versiones.</p></div>
+        <div class="spec"><div class="fichas">
+          <span class="ficha">ProRes 422 HQ</span><span class="ficha">3840×2160 · 4K UHD</span><span class="ficha">25 fps</span>
+          <span class="ficha">Rec.709</span><span class="ficha">Audio estéreo 48 kHz / 24 bits</span><span class="ficha">TC desde 01:00:00:00</span>
+        </div></div>
+      </div>
+      <div class="item">
+        <div><h3>Web</h3><p class="para">Para YouTube, la página web y redes. Revisadas para que en web no se vean lavadas.</p></div>
+        <div class="spec">
+          <div><div class="sub">4K</div><div class="fichas"><span class="ficha">MP4 H.264</span><span class="ficha">3840×2160</span><span class="ficha">~50 Mbps</span><span class="ficha">−14 LUFS</span></div></div>
+          <div><div class="sub">1080p</div><div class="fichas"><span class="ficha">MP4 H.264</span><span class="ficha">1920×1080</span><span class="ficha">~20 Mbps</span><span class="ficha">−14 LUFS</span></div></div>
+        </div>
+      </div>
+      <div class="item">
+        <div><h3>Pantalla gigante</h3><p class="para">Para proyectar en eventos.</p></div>
+        <div class="spec">
+          <div><div class="sub">ProRes</div><div class="fichas"><span class="ficha">ProRes 422 HQ</span><span class="ficha">1920×1080 · 16:9</span><span class="ficha">25 fps</span></div></div>
+          <div><div class="sub">MP4, el que abre cualquier ordenador de la empresa técnica</div><div class="fichas"><span class="ficha">MP4 H.264</span><span class="ficha">1920×1080 · 16:9</span><span class="ficha">25 fps</span><span class="ficha">~40 Mbps</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-audio">
+    <h2 id="t-audio">Audio</h2>
+    <div class="items">
+      <div class="item">
+        <div><h3>Audio final por separado</h3><p class="para">Para volver a usar o ajustar el sonido sin tocar el vídeo.</p></div>
+        <div class="spec"><div class="fichas"><span class="ficha">WAV estéreo</span><span class="ficha">48 kHz / 24 bits</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-proyecto">
+    <h2 id="t-proyecto">Proyecto y material</h2>
+    <div class="items">
+      <div class="item">
+        <div><h3>Proyecto de DaVinci</h3><p class="para">Para poder abrir y modificar el vídeo más adelante, en cualquier ordenador.</p></div>
+        <div class="spec">
+          <div class="fichas"><span class="ficha">Project Archive · .dra</span></div>
+          <p>Con todos los brutos que se usan en el proyecto, <b>tal como se entregaron</b>, sin volver a recortarlos.</p>
+          <p>El proyecto debe usar los clips sin glare que os hemos pasado; los últimos son <code>S020</code>, <code>S029</code> y <code>S033</code>.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div><h3>LUTs</h3><p class="para">Para que el color salga igual al abrir el proyecto en otro ordenador.</p></div>
+        <div class="spec">
+          <div class="fichas"><span class="ficha">.cube</span></div>
+          <p>Todas las LUTs usadas que no sean de serie de DaVinci.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div><h3>Gráficos</h3><p class="para">Para poder rehacer o corregir las diapositivas y los logos.</p></div>
+        <div class="spec"><p>Las diapositivas y los logos usados.</p></div>
+      </div>
+      <div class="item">
+        <div><h3>Ficha técnica</h3><p class="para">Para saber cómo está hecho el color.</p></div>
+        <div class="spec"><p>Qué gamma se ha usado en el máster y en las versiones web, y qué LUTs. Si solo son las de serie de DaVinci, indicarlo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-arbol">
+    <h2 id="t-arbol">Carpetas y nombres</h2>
+    <div class="arbol-cab">
+      <p>Nombres exactamente como aquí. Todo subido a la nube.</p>
+      <button type="button" id="copiar">Copiar árbol</button>
+    </div>
+    <div class="caja-codigo"><pre id="arbol"><span class="n">ENTREGA_FINAL/</span>
+├── <span class="n">MIGUEL_KEYNOTE/</span>
+│   ├── 01_MASTER/
+│   │   └── MIGUEL_KEYNOTE_MASTER_4K_ProRes422HQ.mov
+│   ├── 02_WEB/
+│   │   ├── MIGUEL_KEYNOTE_WEB_4K.mp4
+│   │   └── MIGUEL_KEYNOTE_WEB_1080p.mp4
+│   ├── 03_PANTALLA_GIGANTE/
+│   │   ├── MIGUEL_KEYNOTE_PANTALLA_GIGANTE_1080p_ProRes422HQ.mov
+│   │   └── MIGUEL_KEYNOTE_PANTALLA_GIGANTE_1080p.mp4
+│   ├── 04_AUDIO/
+│   │   └── MIGUEL_KEYNOTE_AUDIO.wav
+│   ├── 05_PROYECTO_DAVINCI/
+│   │   ├── MIGUEL_KEYNOTE.dra/        <span class="c">← archivo completo de DaVinci</span>
+│   │   │   ├── <span class="c">(proyecto)</span>
+│   │   │   └── <span class="c">(todos los brutos del proyecto, sin volver a recortar)</span>
+│   │   └── LUTS/                      <span class="c">← .cube usados que no sean de serie</span>
+│   ├── 06_GRAFICOS/
+│   │   ├── DIAPOSITIVAS/
+│   │   └── LOGOS/
+│   └── MIGUEL_KEYNOTE_FICHA_TECNICA.txt
+│
+└── <span class="n">PABLO_KEYNOTE/</span>
+    ├── 01_MASTER/
+    │   └── PABLO_KEYNOTE_MASTER_4K_ProRes422HQ.mov
+    ├── 02_WEB/
+    │   ├── PABLO_KEYNOTE_WEB_4K.mp4
+    │   └── PABLO_KEYNOTE_WEB_1080p.mp4
+    ├── 03_PANTALLA_GIGANTE/
+    │   ├── PABLO_KEYNOTE_PANTALLA_GIGANTE_1080p_ProRes422HQ.mov
+    │   └── PABLO_KEYNOTE_PANTALLA_GIGANTE_1080p.mp4
+    ├── 04_AUDIO/
+    │   └── PABLO_KEYNOTE_AUDIO.wav
+    ├── 05_PROYECTO_DAVINCI/
+    │   ├── PABLO_KEYNOTE.dra/         <span class="c">← archivo completo de DaVinci</span>
+    │   │   ├── <span class="c">(proyecto)</span>
+    │   │   └── <span class="c">(todos los brutos del proyecto, sin volver a recortar)</span>
+    │   └── LUTS/                      <span class="c">← .cube usados que no sean de serie</span>
+    ├── 06_GRAFICOS/
+    │   ├── DIAPOSITIVAS/
+    │   └── LOGOS/
+    └── PABLO_KEYNOTE_FICHA_TECNICA.txt</pre></div>
+  </section>
+
+  <footer>Conferencias de Miguel y de Pablo · 25 fps · timecode del máster desde 01:00:00:00</footer>
+</main>
+
+<script>
+  const boton = document.getElementById("copiar");
+  boton.addEventListener("click", async () => {
+    const texto = document.getElementById("arbol").innerText;
+    try { await navigator.clipboard.writeText(texto); boton.textContent = "Copiado"; }
+    catch (e) {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById("arbol"));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); boton.textContent = "Seleccionado: pulsa ⌘C";
+    }
+    setTimeout(() => (boton.textContent = "Copiar árbol"), 2500);
+  });
+</script>
+
+</body>
+</html>
